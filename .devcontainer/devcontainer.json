@@ -37,5 +37,5 @@
   "postCreateCommand": "bash .devcontainer/setup.sh",
   
   "remoteUser": "node",
-  "updateContentCommand": "npm run setup"
+  "updateContentCommand": "npm install"
 } 

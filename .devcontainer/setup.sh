@@ -54,11 +54,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt-get update -y
 sudo apt-get install -y google-chrome-stable
 
-# Install root workspace dependencies
-npm install
-
-# Navigate to the project directory and install dependencies
-cd routedeals
+# Install project dependencies
 npm install
 
 # Install additional scraping packages (these are already in package.json)
