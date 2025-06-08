@@ -1060,4 +1060,201 @@ export const clearAllFakeData = action({
       message: "ALL fake data cleared - statistical accuracy restored"
     };
   }
+});
+
+/**
+ * Create sample test data for development and demo purposes
+ */
+export const createTestData = action({
+  args: {},
+  handler: async (ctx) => {
+    console.log("🧪 Creating test data for development...");
+    
+    // Sample flight data
+    const flightData = [
+      {
+        type: "flight",
+        route: "JFK-MCO",
+        date: "2025-01-15",
+        price: 299,
+        source: "Skyscanner",
+        url: "https://www.skyscanner.com/transport/flights/jfk/mco/20250115/",
+        airline: "JetBlue",
+        flightNumber: "B61503",
+        departureTime: "08:00",
+        arrivalTime: "11:15",
+        duration: "3h 15m",
+        stops: 0,
+        seatsRemaining: 7,
+        fareType: "Economy",
+        refundable: false,
+        metadata: {
+          origin: "JFK",
+          dest: "MCO",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      },
+      {
+        type: "flight", 
+        route: "LGA-MIA",
+        date: "2025-01-20",
+        price: 245,
+        source: "Skyscanner",
+        url: "https://www.skyscanner.com/transport/flights/lga/mia/20250120/",
+        airline: "American",
+        flightNumber: "AA1023",
+        departureTime: "14:30",
+        arrivalTime: "17:45",
+        duration: "3h 15m",
+        stops: 0,
+        seatsRemaining: 4,
+        fareType: "Main Cabin",
+        refundable: false,
+        metadata: {
+          origin: "LGA",
+          dest: "MIA",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      },
+      {
+        type: "flight",
+        route: "EWR-TPA", 
+        date: "2025-02-01",
+        price: 189,
+        source: "Skyscanner",
+        url: "https://www.skyscanner.com/transport/flights/ewr/tpa/20250201/",
+        airline: "Southwest",
+        flightNumber: "WN847",
+        departureTime: "12:15",
+        arrivalTime: "15:30",
+        duration: "3h 15m",
+        stops: 0,
+        seatsRemaining: 12,
+        fareType: "Wanna Get Away",
+        refundable: false,
+        metadata: {
+          origin: "EWR",
+          dest: "TPA",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      }
+    ];
+
+    // Sample hotel data
+    const hotelData = [
+      {
+        type: "hotel",
+        route: "MCO",
+        date: "2025-01-15",
+        price: 89,
+        source: "Booking.com",
+        url: "https://www.booking.com/hotel/orlando-downtown-marriott.html",
+        hotelName: "Orlando Marriott Downtown",
+        starRating: 4,
+        guestRating: 4.2,
+        roomType: "Standard King",
+        roomsRemaining: 3,
+        cancellationPolicy: "Free cancellation",
+        paymentOptions: "Pay at property",
+        amenities: ["Pool", "Gym", "WiFi", "Parking"],
+        distanceFromAirport: "25 minutes",
+        metadata: {
+          region: "MCO",
+          checkIn: "2025-01-15",
+          checkOut: "2025-01-18",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      },
+      {
+        type: "hotel",
+        route: "MIA", 
+        date: "2025-01-20",
+        price: 124,
+        source: "Booking.com",
+        url: "https://www.booking.com/hotel/miami-beach-resort.html",
+        hotelName: "Miami Beach Resort",
+        starRating: 4,
+        guestRating: 4.5,
+        roomType: "Ocean View Queen",
+        roomsRemaining: 2,
+        cancellationPolicy: "Free cancellation until 24h",
+        paymentOptions: "Pay now",
+        amenities: ["Beach Access", "Pool", "Restaurant", "Spa"],
+        distanceFromAirport: "15 minutes",
+        metadata: {
+          region: "MIA",
+          checkIn: "2025-01-20",
+          checkOut: "2025-01-23",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      },
+      {
+        type: "hotel",
+        route: "TPA",
+        date: "2025-02-01",
+        price: 67,
+        source: "Booking.com", 
+        url: "https://www.booking.com/hotel/tampa-downtown-hilton.html",
+        hotelName: "Tampa Downtown Hilton",
+        starRating: 3,
+        guestRating: 4.1,
+        roomType: "Business King",
+        roomsRemaining: 8,
+        cancellationPolicy: "Free cancellation",
+        paymentOptions: "Pay at property",
+        amenities: ["Business Center", "Pool", "Gym"],
+        distanceFromAirport: "20 minutes",
+        metadata: {
+          region: "TPA",
+          checkIn: "2025-02-01",
+          checkOut: "2025-02-04",
+          enhancedDataAvailable: true,
+          realDataOnly: false
+        }
+      }
+    ];
+
+    let created = 0;
+    
+    // Insert flight data
+    for (const flight of flightData) {
+      try {
+        await ctx.runMutation(api.database.insertScrapeResult, {
+          ...flight,
+          scrapedAt: Date.now()
+        });
+        created++;
+        console.log(`✈️ Added test flight: ${flight.route} $${flight.price}`);
+      } catch (error) {
+        console.error(`Failed to create flight ${flight.route}:`, error);
+      }
+    }
+
+    // Insert hotel data
+    for (const hotel of hotelData) {
+      try {
+        await ctx.runMutation(api.database.insertScrapeResult, {
+          ...hotel,
+          scrapedAt: Date.now()
+        });
+        created++;
+        console.log(`🏨 Added test hotel: ${hotel.route} $${hotel.price}`);
+      } catch (error) {
+        console.error(`Failed to create hotel ${hotel.route}:`, error);
+      }
+    }
+
+    console.log(`✅ Created ${created} test records`);
+    
+    return {
+      success: true,
+      recordsCreated: created,
+      message: `Successfully created ${created} test records for development`
+    };
+  }
 }); 
