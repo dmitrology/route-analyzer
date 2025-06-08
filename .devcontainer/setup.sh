@@ -54,17 +54,8 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt-get update -y
 sudo apt-get install -y google-chrome-stable
 
-# Install project dependencies
-npm install
-
-# Install additional scraping packages (these are already in package.json)
-# npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth puppeteer-extra-plugin-adblocker
-
-# Install proxy rotation packages (these are already in package.json)
-# npm install rotating-proxies proxy-agent socks-proxy-agent
-
-# Install real API clients (these are already in package.json)
-# npm install amadeus axios cheerio playwright
+# Install project dependencies - npm install is handled by updateContentCommand
+echo "📦 Dependencies will be installed by devcontainer updateContentCommand"
 
 # Create scraper directories
 mkdir -p scrapers/real
@@ -80,5 +71,6 @@ echo "🎯 Ready to scrape REAL travel data!"
 echo ""
 echo "Next steps:"
 echo "1. Set up your API keys in .env.local"
-echo "2. Run: npm run scraper:start"
-echo "3. Get real flight/hotel data!" 
+echo "2. Run: npm run dev (for Next.js)"
+echo "3. Run: npx convex dev --typecheck=disable (for Convex)"
+echo "4. Visit: http://localhost:3000" 
