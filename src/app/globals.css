@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+/* Custom components for RouteDeals */
+.hot-deal-gradient {
+  background: linear-gradient(to right, #f97316, #ef4444);
+}
+
+.price-drop-indicator {
+  background: linear-gradient(to right, #3b82f6, #10b981);
+}
+
+.rarity-extremely-rare {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.rarity-very-rare {
+  background-color: #fff7ed;
+  color: #ea580c;
+  border-color: #fed7aa;
+}
+
+.rarity-rare {
+  background-color: #fefce8;
+  color: #ca8a04;
+  border-color: #fde047;
+}
+
+.rarity-uncommon {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+}
+
+.rarity-common {
+  background-color: #f9fafb;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+
+/* Deal card styles */
+.deal-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+
+.deal-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
+.deal-card-hot {
+  border-left: 4px solid #f97316;
+  box-shadow: 0 4px 6px -1px rgba(251, 146, 60, 0.1);
+}
+
+.price-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Focus states for better accessibility */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Animation utilities */
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
+}
+
+/* Custom scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.3s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.2s ease-out;
+}
