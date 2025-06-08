@@ -59,3 +59,14 @@
   error: null
 }
  GET / 200 in 8537ms
+ ✓ Compiled in 4s (417 modules)
+ ✓ Compiled in 173ms (417 modules)
+ ✓ Compiled in 771ms (417 modules)
+ ✓ Compiled in 211ms (417 modules)
+ ✓ Compiled in 197ms (417 modules)
+ ✓ Compiled in 1140ms (417 modules)
+ ✓ Compiled in 192ms (417 modules)
+ ✓ Compiled in 139ms (417 modules)
+ ✓ Compiled in 1666ms (417 modules)
+ ✓ Compiled in 202ms (417 modules)
+[?25h

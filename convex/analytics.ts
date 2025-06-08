@@ -363,7 +363,7 @@ export const buildPackagesFromScrapeResults = action({
         
         // Calculate probability to drop
         const deltaPct = flight.deltaPct || 0;
-        const pDrop = calculatePriceDropProbability(deltaPct, rarityScore, pctSaved);
+        const pDrop = calculatePriceDropProbabilityHelper(deltaPct, rarityScore, pctSaved);
         
         // Determine if it's a hot deal
         const isHotDeal = deltaPct >= 0.15 && flightRarity <= 0.2;
@@ -448,7 +448,7 @@ function applyExponentialSmoothing(data: number[]): number[] {
   return smoothed;
 }
 
-function calculatePriceDropProbability(deltaPct: number, rarityScore: number, pctSaved: number): number {
+function calculatePriceDropProbabilityHelper(deltaPct: number, rarityScore: number, pctSaved: number): number {
   // Simplified logistic regression approximation
   // Higher deltaPct and lower rarity = higher probability to drop
   const x = deltaPct * 2 - rarityScore - pctSaved * 0.5;
