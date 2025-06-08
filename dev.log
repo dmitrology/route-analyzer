@@ -1,0 +1,61 @@
+
+> routedeals@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.3.3
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.94:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 4.2s
+ ○ Compiling / ...
+ ✓ Compiled / in 8.1s (895 modules)
+🔍 Dashboard Debug: {
+  topDealsCount: 6,
+  topDeals: [
+    {
+      _id: 'sample1',
+      type: 'flight',
+      route: 'EWR-TPA',
+      price: 221,
+      expectedUsd: 411,
+      deltaPct: 0.46,
+      zScore: -2.1,
+      rarity: 0.15,
+      date: '2024-12-20',
+      airline: 'JetBlue',
+      departureTime: '08:30',
+      arrivalTime: '11:45',
+      duration: '3h 15m',
+      stops: 0,
+      seatsRemaining: 4,
+      url: 'https://example.com/flight1'
+    },
+    {
+      _id: 'sample2',
+      type: 'hotel',
+      route: 'TPA',
+      price: 89,
+      expectedUsd: 156,
+      deltaPct: 0.43,
+      zScore: -1.8,
+      rarity: 0.22,
+      date: '2024-12-20',
+      hotelName: 'Tampa Marriott Downtown',
+      starRating: 4,
+      guestRating: 4.2,
+      roomType: 'Standard King',
+      checkIn: '2024-12-20',
+      checkOut: '2024-12-23',
+      url: 'https://example.com/hotel1'
+    }
+  ],
+  modelPerformance: {
+    avgAccuracy: 85.4,
+    totalPredictions: 1247,
+    lastUpdated: 1749406404243
+  },
+  error: null
+}
+ GET / 200 in 8537ms
